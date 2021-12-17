@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../utils/contexts/auth_context";
 import { getUserDoc } from "../lib/firebase";
+import LoadingSpinner from "../components/icons/loading-spinner";
 
 export default function Home() {
   const { currentUser } = useContext(AuthContext);
@@ -13,7 +14,7 @@ export default function Home() {
   return (
     <div className="text-3xl">
       <div>Home</div>
-      {userData ? <div>{userData.email}</div> : <div>no data</div>}
+      {userData ? <div>{userData.email}</div> : <LoadingSpinner/>}
     </div>
   );
 }
