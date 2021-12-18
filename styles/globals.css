@@ -18,3 +18,19 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.navbar-wrapper {
+  @apply w-full absolute top-0;
+}
+
+.navbar {
+  @apply max-w-7xl mx-auto flex flex-row justify-between px-6 py-4;
+}
+
+.footer-text {
+  @apply text-2xl my-auto;
+}
+
+.footer-social-icon {
+  @apply h-8 w-8 my-auto;
+}

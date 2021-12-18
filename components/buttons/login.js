@@ -1,12 +1,12 @@
 import { login } from "../../lib/firebase";
 
-export default function LogIn() {
+export default function LogIn(props) {
   return (
     <button
       onClick={login}
-      className={`flex rounded-full w-50 justify-center items-center my-6 py-4 px-4 text-sm text-black border-2 border-black hover:bg-black hover:text-white `}
+      className={`flex justify-center py-2 px-5 border border-transparent text-sm font-medium rounded-md  bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-100`}
     >
-      Login
+      {props.text}
     </button>
   );
 }
