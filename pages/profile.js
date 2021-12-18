@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../utils/contexts/auth_context";
 import LogOut from "../components/buttons/logout";
 import { getUserDoc } from "../lib/firebase";
-import NavBar from "../components/sections/NavBar";
+import NavBar from "../components/sections/navbar";
 
 export default function Profile() {
   const { currentUser } = useContext(AuthContext);
