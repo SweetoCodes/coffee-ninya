@@ -6,7 +6,7 @@ import NavBar from "../components/sections/navbar";
 
 export default function Home() {
   const { currentUser } = useContext(AuthContext);
-  const[userData, setUserData] = useState();
+  const [userData, setUserData] = useState();
 
   useEffect(() => {
     getUserDoc(currentUser.uid).then(data => setUserData(data))

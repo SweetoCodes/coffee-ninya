@@ -1,6 +1,5 @@
 import MeetOthers from "../icons/svg-assets/meet-others";
-import { login } from "../../lib/firebase";
-import CTA from "../buttons/cta";
+import GoogleSignInButton from "../buttons/google-signin";
 import Calendar from "../icons/svg-assets/calendar";
 import FillInput from "../icons/svg-assets/fill-input";
 
@@ -31,7 +30,7 @@ export default function InfoBlocks() {
         </div>
       </div>
       <div className="my-10">
-        <CTA onclick={login} text={"Create Account"} />
+        <GoogleSignInButton text={"Create Account"} />
       </div>
     </div>
   );

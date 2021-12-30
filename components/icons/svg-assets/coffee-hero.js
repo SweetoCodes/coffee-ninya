@@ -1,7 +1,7 @@
 export default function CoffeeHero(props) {
   return (
     <svg
-    className={props.style}
+    className={"w-full max-w-[800px] mx-auto py-8 sm:py-0 sm:pt-8"}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 1112 650"

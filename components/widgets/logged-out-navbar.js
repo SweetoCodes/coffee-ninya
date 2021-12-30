@@ -9,8 +9,8 @@ export default function LoggedOutNavBar() {
           <div className="my-auto">Icon</div>
           </Link>
           <div className="flex flex-row space-x-6">
-              <LogIn text={"Log In"}/>
-              <LogIn text={"Sign Up"}/>
+              <LogIn style="cta-button-small" text={"Log In"}/>
+              <LogIn style="cta-button-small" text={"Sign Up"}/>
           </div>
       </div>
       <hr className="mx-auto w-1/2"></hr>

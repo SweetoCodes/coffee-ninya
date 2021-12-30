@@ -1,6 +1,16 @@
-import { logout } from "../../lib/firebase";
+import { useRouter } from 'next/router'
+import { auth } from "../../utils/firebase/config";
+import { GoogleAuthProvider } from "firebase/auth";
 
 export default function LogOut() {
+  const provider = new GoogleAuthProvider();
+  const router = useRouter()
+
+  const logout = () => {
+    auth.signOut()
+    .then(()=>{router.push("/")});
+  };
+  
   return (
     <button
       onClick={logout}
