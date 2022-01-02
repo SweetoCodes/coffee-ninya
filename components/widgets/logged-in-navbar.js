@@ -1,27 +1,16 @@
-import { useContext } from "react";
-import Image from "next/image";
-import { AuthContext } from "../../utils/contexts/auth_context";
 import Link from "next/link";
+import ProfilePicture from "./profile-picture";
 
 export default function LoggedInNavBar() {
-  const { currentUser } = useContext(AuthContext);
   return (
     <div className="navbar-wrapper">
       <div className="navbar">
-      <Link href={"/home"}>
-        <div>icon</div>
+        <Link href={"/home"}>
+          <div>icon</div>
         </Link>
         <Link href={"/profile"}>
-          <div className="w-10 h-10 cursor-pointer">
-            <Image
-              className="object-cover rounded-full transition duration-1000 ease-in-out"
-              src={currentUser.photoURL}
-              alt="me"
-              width="50"
-              height="50"
-              layout="responsive"
-              alt="Profile Picture"
-            />
+          <div>
+            <ProfilePicture style={"w-10 h-10 cursor-pointer"} />
           </div>
         </Link>
       </div>

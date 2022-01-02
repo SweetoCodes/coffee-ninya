@@ -1,22 +1,16 @@
-import { useState, useEffect, useContext } from "react";
-import { AuthContext } from "../utils/contexts/auth_context";
-import LogOut from "../components/buttons/logout";
-import { getUserDoc } from "../lib/firebase";
 import NavBar from "../components/sections/navbar";
+import ProfilePicture from "../components/widgets/profile-picture";
+import UpdateProfile from "../components/sections/update-profile";
+import Navigation from "../components/buttons/navigation";
+import LogOut from "../components/buttons/logout";
 
 export default function Profile() {
-  const { currentUser } = useContext(AuthContext);
-  const [userData, setUserData] = useState();
-
-  useEffect(() => {
-    getUserDoc(currentUser.uid).then(data => setUserData(data))
-  }, []);
-
   return (
-    <div className="">
+    <div>
       <NavBar/>
-      <div>Profile</div>
-      {userData ? <div>{userData.email}</div> : <div>no data</div>}
+      <ProfilePicture style={"w-40 h-40 mt-24 mx-auto items-center"}/>
+      <UpdateProfile/>
+      <Navigation link="/home" buttonText="Back To Home" style={"my-4"} />
       <LogOut/>
     </div>
   );

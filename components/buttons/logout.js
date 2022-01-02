@@ -1,20 +1,19 @@
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import { auth } from "../../utils/firebase/config";
-import { GoogleAuthProvider } from "firebase/auth";
 
 export default function LogOut() {
-  const provider = new GoogleAuthProvider();
-  const router = useRouter()
+  const router = useRouter();
 
   const logout = () => {
-    auth.signOut()
-    .then(()=>{router.push("/")});
+    auth.signOut().then(() => {
+      router.push("/");
+    });
   };
-  
+
   return (
     <button
       onClick={logout}
-      className={`flex rounded-full w-50 justify-center items-center my-6 py-4 px-4 text-sm text-black border-2 border-black hover:bg-black hover:text-white `}
+      className={`flex justify-center mx-auto py-2 px-5 border border-black text-sm font-medium rounded-md  bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-100`}
     >
       Log Out
     </button>
