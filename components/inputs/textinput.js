@@ -25,9 +25,9 @@ export default function TextInput({ name, fieldName, initialValue }) {
   }
     
   return (
-    <div>
+    <div className="input-container">
       <input
-        className={"bg-transparent w-full text-xl border-b focus:outline-none focus:border-blue-300 py-3 " + (saved ? "text-[#6ba568] " : "" )}
+        className={"input " + (saved ? "text-[#6ba568] " : "" )}
         name={name}
         placeholder={name}
         defaultValue={initialValue}

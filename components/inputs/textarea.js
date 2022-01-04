@@ -17,9 +17,9 @@ export default function TextArea({ name, fieldName, initialValue }) {
   }
     
   return (
-    <div>
+    <div className="sm:w-[400px] w-full mx-auto">
       <textarea
-        className={"bg-transparent w-full text-xl border-b focus:outline-none focus:border-blue-300 py-3 " + (saved ? "text-[#6ba568] " : "" )}
+        className={"bg-transparent text-left sm:text-center sm:w-[400px] w-full h-[200px] resize-none text-xl px-2 border-b-2 shadow-md focus:outline-none focus:border-blue-300 py-3 " + (saved ? "text-[#6ba568] " : "" )}
         name={name}
         placeholder={name}
         defaultValue={initialValue}

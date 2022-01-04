@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../utils/contexts/auth_context";
 import { getUserDoc } from "../../lib/firebase";
+import SingleOptionForm from "../forms/single-option-form";
 
 export default function UpdateField() {
   const { currentUser } = useContext(AuthContext);
@@ -18,6 +19,13 @@ export default function UpdateField() {
     return (
       <div className="max-w-7xl flex flex-col mx-auto space-y-2 px-8 mt-10 transition duration-500 ease-in-out">
           <h1 className="text-3xl font-bold">Provide Your Info</h1>
+          <SingleOptionForm 
+          name="Language"
+          fieldName="language"
+          initialValue={userData.language}
+          style=""
+          options={["English","Spanish","French"]}
+        />
       </div>
     );
   }

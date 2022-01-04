@@ -22,8 +22,8 @@ export default function Home() {
       <NavBar/>
       <HomeSplash data={userData}/>
       <UpdateField data={userData}/>
-      <Meets/>
       <UpdateInterests data={userData}/>
+      <Meets/>
       <Navigation link="/profile" buttonText="Further Edit Profile" style={"my-4"} />
     </div>
   );
