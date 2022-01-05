@@ -1,5 +1,4 @@
 export default function CoffeeMeet({ data, idx }) {
-  console.log(data);
   return (
     <div key={idx}>
       {data.uids[0]}

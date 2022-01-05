@@ -40,11 +40,11 @@ a {
 }
 
 .input {
-  @apply bg-transparent w-full text-xl px-2 border-b-2 shadow-md focus:outline-none focus:border-blue-300 py-3;
+  @apply bg-transparent w-full text-xl px-2 border-b focus:outline-none focus:border-blue-300 py-3;
  }
 
  .input-container {
-  @apply flex sm:mx-6  mx-auto sm:my-6 my-2 sm:w-[200px] w-full;
+  @apply flex sm:mx-6 mx-auto sm:my-6 my-2 sm:w-[200px] w-full;
  }
 
 .profile-section {

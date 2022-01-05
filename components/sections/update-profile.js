@@ -4,7 +4,7 @@ import { getUserDoc } from "../../lib/firebase";
 import TextInput from "../inputs/textinput";
 import TextArea from "../inputs/textarea";
 import SingleOptionForm from "../forms/single-option-form";
-import {location, primaryLanguage, sector  } from "../../data/form-data"
+import {location, primaryLanguage, sectors  } from "../../data/form-data"
 
 export default function UpdateProfile() {
   const { currentUser } = useContext(AuthContext);
@@ -19,7 +19,7 @@ export default function UpdateProfile() {
   }
 
   return (
-    <div className="max-w-7xl flex flex-col mx-auto sm:space-y-10 px-6 mt-10">
+    <div className="max-w-7xl flex flex-col mx-auto sm:space-x-6 sm:space-y-10 px-6 mt-10">
       <div className="profile-section">
         <TextInput
           name="First Name"
@@ -56,7 +56,7 @@ export default function UpdateProfile() {
           fieldName="sector"
           style=""
           initialValue={userData.sector}
-          options={sector}
+          options={sectors}
         />
       </div>
       <div className="profile-section">

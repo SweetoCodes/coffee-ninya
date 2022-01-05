@@ -263,6 +263,6 @@ export const primaryLanguage = ["AF", "SQ", "AR-SA", "AR-IQ", "AR-EG", "AR-LY", 
 "ES-PR", "SX", "SV", "SV-FI", "TH", "TS", "TN", "TR", "UK", "UR", "VE", "VI", "XH",
 "JI", "ZU"];
 
-export const sector = ["thing1", "thing2", "thing3"];
+export const sectors = ["Tech", "Venture Capital", "thing3"];
 
-export const interests = ["thing1", "thing2", "thing3"];
+export const interests = ["Venture Capital", "VC", "Tech", "Investment Banking"];
