@@ -35,7 +35,7 @@ export default function InterestSelector(props) {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full mr-6">
       <DropDown
         {...props}
         saved={saved}
@@ -44,7 +44,7 @@ export default function InterestSelector(props) {
       />
     <div className="my-4 mx-auto w-full">
         {tags === undefined || tags.length == 0 ? (
-          <div>Select an option to add it to your {props.name} tags.</div>
+          <div>Select an option to add it to your {props.name} tags. We need these to generate coffee meets for you.</div>
         ) : (
           <div className="flex flex-row flex-wrap mr-2">
             {tags.map((text, idx) => (

@@ -29,7 +29,7 @@ export default function DropDown({
         />
       </div>
       {expanded && (
-        <div className="absolute my-10 flex flex-col cursor-pointer py-1 z-10 overflow-y-auto max-h-[300px] sm:w-[200px] w-full text-base bg-white rounded divide-y divide-gray-100 shadow" aria-labelledby="dropdownButton">
+        <div className="absolute my-10 flex flex-col cursor-pointer py-1 z-10 overflow-y-auto max-h-[300px] sm:w-[350px] w-full text-base bg-white rounded divide-y divide-gray-100 shadow" aria-labelledby="dropdownButton">
             {options.map((text, idx) => (
               <ul
                 key={idx}

@@ -19,7 +19,7 @@ export default function UpdateProfile() {
   }
 
   return (
-    <div className="max-w-7xl flex flex-col mx-auto sm:space-y-10 px-6 mt-10">
+    <div className="max-w-7xl flex flex-col mx-auto sm:space-y-10 sm:px-6 mt-10">
       <div className="profile-section">
         <TextInput
           name="First Name"
