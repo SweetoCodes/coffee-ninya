@@ -2,7 +2,7 @@ import { writeUserDoc } from "../../lib/firebase";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../utils/contexts/auth_context";
 
-export default function TextInput({ name, fieldName, initialValue }) {
+export default function TextInput({ name, fieldName, initialValue, style }) {
   const { currentUser } = useContext(AuthContext);
   const [saved, setSaved] = useState(false);
 
@@ -25,7 +25,7 @@ export default function TextInput({ name, fieldName, initialValue }) {
   }
     
   return (
-    <div className="input-container">
+    <div className={"input-container " + style}>
       <input
         className={"input " + (saved ? "text-[#6ba568] " : "" )}
         name={name}

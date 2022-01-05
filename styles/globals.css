@@ -44,7 +44,7 @@ a {
  }
 
  .input-container {
-  @apply flex sm:mx-6 mx-auto sm:my-6 my-2 sm:w-[200px] w-full;
+  @apply flex  sm:my-6 my-2 sm:w-[200px] w-full;
  }
 
 .profile-section {

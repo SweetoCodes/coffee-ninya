@@ -19,42 +19,45 @@ export default function UpdateProfile() {
   }
 
   return (
-    <div className="max-w-7xl flex flex-col mx-auto sm:space-x-6 sm:space-y-10 px-6 mt-10">
+    <div className="max-w-7xl flex flex-col mx-auto sm:space-y-10 px-6 mt-10">
       <div className="profile-section">
         <TextInput
           name="First Name"
           fieldName="first_name"
           initialValue={userData.first_name}
+          style="mx-6"
         />
         <TextInput
           name="Last Name"
           fieldName="last_name"
           initialValue={userData.last_name}
+          style="mx-6"
         />
         <SingleOptionForm
           name="Country"
           fieldName="country"
           initialValue={userData.country}
-          style=""
+          style="mx-6"
           options={location}
         />
         <SingleOptionForm
           name="Primary Language"
           fieldName="language"
           initialValue={userData.language}
-          style=""
+          style="mx-6"
           options={primaryLanguage}
         />
         <TextInput
           name="Company"
           fieldName="company"
           initialValue={userData.company}
+          style="mx-6"
         />
-        <TextInput name="Role" fieldName="role" initialValue={userData.role} />
+        <TextInput name="Role" fieldName="role" initialValue={userData.role} style="mx-6" />
         <SingleOptionForm
           name="Sector"
           fieldName="sector"
-          style=""
+          style="mx-6"
           initialValue={userData.sector}
           options={sectors}
         />
