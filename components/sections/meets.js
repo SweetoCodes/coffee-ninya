@@ -11,15 +11,23 @@ export default function Meets() {
     getMeetDoc(currentUser.uid).then((data) => setMeetData(data));
   }, []);
 
-  if(!meetData){return null}
+  if (!meetData) {
+    return null;
+  }
 
   return (
-    <div className="max-w-7xl flex flex-col mx-auto space-y-2 px-8 mt-10">
+    <div className="max-w-7xl flex flex-col mx-auto space-y-8 px-8 mt-10">
       <div className="text-3xl font-bold">Your Scheduled Coffee Meets</div>
       {meetData ? (
-        meetData.map((meet, idx) => <CoffeeMeet data={meet} idx={idx} />)
+        <div>
+          {meetData.map((meet, idx) => (
+            <CoffeeMeet data={meet} idx={idx} user={currentUser} />
+          ))}
+        </div>
       ) : (
-        <div className="text-lg">You have no current or previously scheduled meets</div>
+        <div className="text-lg">
+          You have no current or previously scheduled meets
+        </div>
       )}
     </div>
   );

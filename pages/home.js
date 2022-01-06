@@ -24,7 +24,7 @@ export default function Home() {
       <UpdateField data={userData}/>
       <UpdateInterests data={userData}/>
       <Meets/>
-      <Navigation link="/profile" buttonText="Further Edit Profile" style={"my-4"} />
+      <Navigation link="/profile" buttonText="Further Edit Profile" style={"my-8"} />
     </div>
   );
 }

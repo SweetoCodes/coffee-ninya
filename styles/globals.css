@@ -48,5 +48,5 @@ a {
  }
 
 .profile-section {
-  @apply flex flex-wrap sm:flex-row flex-col justify-center items-center align-middle;
+  @apply flex flex-wrap sm:flex-row  justify-center items-center align-middle;
  }
