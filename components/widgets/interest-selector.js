@@ -24,8 +24,12 @@ export default function InterestSelector(props) {
   };
 
   const addTag = (tag) => {
-    setTags([...tags, tag]);
-    saveField([...tags, tag]);
+    if (tags){    setTags([...tags, tag]);
+      saveField([...tags, tag]);}
+      else{
+    setTags([tag]);
+    saveField([tag]);
+      }
   };
 
   const removeTag = (idx) => {
