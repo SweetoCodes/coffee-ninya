@@ -1,12 +1,15 @@
 import Link from "next/link";
 import ProfilePicture from "./profile-picture";
+import Logo from "../icons/logo";
 
 export default function LoggedInNavBar() {
   return (
     <div className="navbar-wrapper">
       <div className="navbar">
         <Link href={"/home"}>
-          <div>icon</div>
+          <div>
+          <Logo style="h-8 w-8 fill-black cursor-pointer"/>
+          </div>
         </Link>
         <Link href={"/profile"}>
           <div>
