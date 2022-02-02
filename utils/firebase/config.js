@@ -15,3 +15,7 @@ const app = initializeApp({ ...firebaseConfig })
 
 export const auth = getAuth(app)
 export const firestore = getFirestore(app)
+
+if (window.location.hostname === "localhost") {
+  app.functions().useFunctionsEmulator("http://localhost:5001");
+}
