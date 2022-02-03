@@ -56,24 +56,52 @@ function findMeets(users) {
 }
 
 function identifyOptimalMatch(docs, originalUserDoc) {
-
-    for (let i = 0; i < docs.length; i++) {
-        if (docs[i].uid == originalUserDoc.uid){
-            console.log("same")
-            continue
-        }
-        else{
-            const x = "bookMeeting(docs[i].uid, originalUserDoc.uid)"
-            break
-        }
-      }
+  for (let i = 0; i < docs.length; i++) {
+    if (docs[i].uid == originalUserDoc.uid) {
+      console.log("same");
+      continue;
+    } else {
+        bookMeeting(docs[i], originalUserDoc)
+      break;
+    }
+  }
 }
 
+function bookMeeting(user1, user2) {
+    const date = new Date();
+    date.setHours(168, 0, 0, 0);
+    const plus1WeekTimestamp = admin.firestore.Timestamp.fromDate(date);
+
+    const q = admin.firestore().collection("meets").doc().set({
+        created_at: admin.firestore.Timestamp.now(),
+        date_scheduled: plus1WeekTimestamp,
+        interests_in_common: user.uid,
+        participants: [{
+            description:user1.description,
+            name:user1.name,
+            sector:user1.sector,
+            uid:user1.uid,
+        },{
+            description:user2.description,
+            name:user2.name,
+            sector:user2.sector,
+            uid:user2.uid,
+        }],
+        uids: [user1.uid, user2.uid],
+      });
+  }
+
 function updateUserNextMeet(uid, timestamp) {
-  console.log(uid, timestamp);
+  const q = admin.firestore().collection("users").doc(uid).set({
+    next_meet: timestamp,
+  }, { merge: true });
 }
 
 function findValidUsers(users) {
+  const date = new Date();
+  date.setHours(24, 0, 0, 0);
+  const plus24Timestamp = admin.firestore.Timestamp.fromDate(date);
+
   const validUsers = [];
   users.forEach((user) => {
     if (
@@ -82,7 +110,7 @@ function findValidUsers(users) {
       (user.sector == null) |
       (user.country == null)
     ) {
-    //   updateUserNextMeet(user.uid, timestamp);
+      updateUserNextMeet(user.uid, plus24Timestamp);
     } else {
       validUsers.push(user);
     }
@@ -106,7 +134,8 @@ async function findMatch(sector, country, interested_sectors) {
 }
 
 function shuffle(array) {
-  let currentIndex = array.length, randomIndex;
+  let currentIndex = array.length,
+    randomIndex;
 
   while (currentIndex != 0) {
     randomIndex = Math.floor(Math.random() * currentIndex);
