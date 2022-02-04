@@ -71,11 +71,12 @@ function bookMeeting(user1, user2) {
     const date = new Date();
     date.setHours(168, 0, 0, 0);
     const plus1WeekTimestamp = admin.firestore.Timestamp.fromDate(date);
+    const sharedInterests = user1.interests.filter(value => user2.interestsincludes(value));
 
     const q = admin.firestore().collection("meets").doc().set({
         created_at: admin.firestore.Timestamp.now(),
         date_scheduled: plus1WeekTimestamp,
-        interests_in_common: user.uid,
+        interests_in_common: sharedInterests,
         participants: [{
             description:user1.description,
             name:user1.name,
