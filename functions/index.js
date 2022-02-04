@@ -1,6 +1,11 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 
+const { google } = require('googleapis');
+const OAuth2 = google.auth.OAuth2; 
+const calendar = google.calendar('v3');
+const googleCredentials = require('./credentials.json');
+
 admin.initializeApp();
 
 exports.newUserSignup = functions.auth.user().onCreate((user) => {
@@ -90,6 +95,34 @@ function bookMeeting(user1, user2) {
         }],
         uids: [user1.uid, user2.uid],
       });
+
+    const eventData = {
+        eventName: "Coffee Meet between " + user1.name + " and " + user2.name,
+        description: "This is your weekly scheduled Coffee Meet. Add a google meet link and organise a time that suits both of you!",
+        startTime: date,
+        timeZone: 'EST',
+        user1Email: user1.email,
+        user2Email: user2.email
+
+    };
+    const oAuth2Client = new OAuth2(
+        googleCredentials.web.client_id,
+        googleCredentials.web.client_secret,
+        googleCredentials.web.redirect_uris[0]
+    );
+
+    oAuth2Client.setCredentials({
+        refresh_token: googleCredentials.refresh_token
+    });
+
+    addEvent(eventData, oAuth2Client).then(data => {
+        response.status(200).send(data);
+        return;
+    }).catch(err => {
+        console.error('Error adding event: ' + err.message); 
+        response.status(500).send(ERROR_RESPONSE); 
+        return;
+    });
   }
 
 function updateUserNextMeet(uid, timestamp) {
@@ -150,3 +183,40 @@ function shuffle(array) {
 
   return array;
 }
+
+function addEvent(event, auth) {
+  return new Promise(function(resolve, reject) {
+      calendar.events.insert({
+          auth: auth,
+          calendarId: 'primary',
+          resource: {
+              'summary': event.eventName,
+              'description': event.description,
+              'start': {
+                  'dateTime': event.startTime,
+                  'timeZone': event.timeZone,
+              },
+              "endTimeUnspecified":true,
+              "attendees": [
+                { "email": event.user1Email},
+                { "email": event.user2Email}
+              ],
+              "guestsCanModify":true,
+              "guestsCanSeeOtherGuests":true,
+  
+          },
+      }, (err, res) => {
+          if (err) {
+              console.log('Rejecting because of error');
+              reject(err);
+          }
+          console.log('Request successful');
+          resolve(res.data);
+      });
+  });
+}
+
+const ERROR_RESPONSE = {
+  status: "500",
+  message: "There was an error adding an event to your Google calendar"
+};
